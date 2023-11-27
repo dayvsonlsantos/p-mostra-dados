@@ -1,0 +1,17 @@
+<p *ngIf="showChartTitle != '' && uniqueValue === ''" class="h-55 w-100 d-flex justify-content-center align-items-center text-size-responsive p-2 position-absolute"><span class="w-75 text-center">{{showChartTitle}}</span></p>
+<div 
+    id={{cardID}} 
+    class="chart {{chartClass}}" 
+    *ngIf="dataColumns != [] && isData === true && uniqueValue === ''"
+>
+</div>
+<!-- <p class="h-55 w-100 d-flex justify-content-center align-items-center small p-2 position-absolute test">{{stringFiltersUsed}}</p> -->
+<app-loading *ngIf="dataColumns === []"></app-loading>
+<app-isEmpty *ngIf="isData === false" [title]="'Nenhum resultado!'" [text]="'Esta pode ser a resposta que você está procurando. Caso contrário, tente Remover ou alterar seus filtros para torná-los menos específicos.'"></app-isEmpty>
+<div 
+*ngIf="dataColumns != [] && isData === true && uniqueValue != ''"
+class="chart {{chartClass}} d-flex flex-column align-items-center justify-content-center"
+>
+    <p *ngIf="showChartTitle != ''" class="m-0 h-60 d-flex flex-column align-items-center justify-content-center w-100 text-size-responsive px-2"><span class="text-center">{{showChartTitle}}</span></p>
+    <span class="w-100 h-40 d-flex flex-column align-items-center justify-content-center text-center fs-3 text-pink">{{uniqueValue}}</span>
+</div>

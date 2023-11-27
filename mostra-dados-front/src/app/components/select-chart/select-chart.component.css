@@ -1,0 +1,14 @@
+.filterButtons{
+    flex-direction: row;
+    gap: 1rem;
+}
+
+@media screen and (max-width: 745px){
+    .filterContent{
+        align-items: center !important;
+    }
+    .filterButtons{
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

@@ -1,0 +1,5 @@
+<div id="{{cardID}}" class="chart d-flex flex-column justify-content-center align-items-center opacity-50 p-4">
+    <h1>{{title || 'Adicionar Gráfico'}}</h1>
+    <p class="small text-center" *ngIf="text != ''">{{text}}</p>
+    <p class="small text-center" *ngIf="text === ''">Clique no botão <span class="text-pink">Editar</span> e adicione um novo gráfico</p>
+</div>

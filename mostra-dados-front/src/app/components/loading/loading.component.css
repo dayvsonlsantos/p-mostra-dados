@@ -1,0 +1,9 @@
+.loading{
+    height:500px;
+    width:100%;
+}
+
+.spinner-big{
+    width: 3rem;
+    height: 3rem;
+}

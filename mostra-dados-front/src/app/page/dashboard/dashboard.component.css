@@ -1,0 +1,51 @@
+.grid{
+    display: grid;
+}
+
+.grid-template{
+    grid-template-columns: repeat(auto-fill, minmax(365px, 1fr));
+}
+
+.dashboard-first-container{
+    flex-direction: column;
+    min-width: 365px;
+}
+
+.dasboard-04{
+    width: 100%;
+}
+
+.dashboard-sm{
+    width: 100%;
+}
+
+@media screen and (min-width: 1451px) and (max-width: 1850px) {
+    .dasboard-04{
+        width: 75%;
+    }
+    .dashboard-sm{
+        width: 25%;
+        flex-direction: column;
+        height: 400px;
+        order: 2;
+    }
+    .dashboard-first-container{
+        flex-direction: row;
+    }
+}
+
+@media screen and (min-width: 1851px) {
+    .dasboard-04{
+        width: 80%;
+    }
+    .dashboard-sm{
+        width: 20%;
+        flex-direction: column;
+        height: 400px;
+        order: 2;
+    }
+    .dashboard-first-container{
+        flex-direction: row;
+    }
+}
+

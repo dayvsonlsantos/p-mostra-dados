@@ -1,0 +1,11 @@
+<section class="d-flex flex-column mainSection">
+    <app-navbar [username]="username" [profileType]="profileType" [profile_picture]="profile_picture"></app-navbar>
+    <app-mobile-bar (toggleMobileSidebar)="receivesToggleMobileNavbar($event)"></app-mobile-bar>
+    <app-sidebar (menuOption)="receivesMenuOption($event)" [toggleMobileSidebarOption]="toggleMobileSidebarOption" [username]="username" [profileType]="profileType" [profile_picture]="profile_picture"></app-sidebar>
+    <article class="p-1 mt-6 mainContainer">
+        <app-dashboard *ngIf="menuOptionValue === 'dashboard'"></app-dashboard>
+        <app-favorite 
+        *ngIf="menuOptionValue === 'favorite'"
+        ></app-favorite>
+    </article>
+</section>

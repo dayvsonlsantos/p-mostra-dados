@@ -1,0 +1,163 @@
+<aside class="w-256 position-fixed z-3 h-100 mt-6 showDesktopSidebar">
+    <section
+        class="w-100 bg-pink rounded rounded-lg p-2 text-white d-flex justify-content-center align-items-center flex-column h-700px">
+        <ul class="mt-4 list-unstyled m-0 h-75">
+            <li class="btn text-white p-3 d-flex align-items-center justify-content-start flex-row gap-2 mb-1"
+                (click)="sendMenuOption('dashboard')"
+                [ngClass]="{'menu-option-selected' : menuOptionValue === 'dashboard'}">
+                <div class="icon stroke">
+                    <svg fill="#ffffff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="dashboard"
+                        class="icon glyph">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <rect x="2" y="2" width="9" height="11" rx="2"></rect>
+                            <rect x="13" y="2" width="9" height="7" rx="2"></rect>
+                            <rect x="2" y="15" width="9" height="7" rx="2"></rect>
+                            <rect x="13" y="11" width="9" height="11" rx="2"></rect>
+                        </g>
+                    </svg>
+                </div>
+                Dashboard
+            </li>
+            <li class="btn text-white p-3 d-flex align-items-center justify-content-start flex-row gap-2 mb-1"
+                (click)="sendMenuOption('favorite')"
+                [ngClass]="{'menu-option-selected' : menuOptionValue === 'favorite'}">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M19.1199 14.9414L19.4399 15.5914C19.5999 15.9114 20.0099 16.2114 20.3499 16.2714L20.7799 16.3414C22.0899 16.5614 22.3899 17.5214 21.4599 18.4614L21.0599 18.8614C20.7899 19.1314 20.6499 19.6514 20.7299 20.0314L20.7799 20.2714C21.1399 21.8514 20.2999 22.4614 18.9299 21.6314L18.6399 21.4514C18.2899 21.2414 17.7099 21.2414 17.3599 21.4514L17.0699 21.6314C15.6899 22.4614 14.8599 21.8514 15.2199 20.2714L15.2699 20.0314C15.3499 19.6614 15.2099 19.1314 14.9399 18.8614L14.5399 18.4614C13.6099 17.5114 13.9099 16.5614 15.2199 16.3414L15.6499 16.2714C15.9999 16.2114 16.3999 15.9114 16.5599 15.5914L16.8799 14.9414C17.4999 13.6914 18.4999 13.6914 19.1199 14.9414Z">
+                            </path>
+                            <path
+                                d="M16.19 2H7.81C4.17 2 2 4.17 2 7.81V16.19C2 19.83 4.17 22 7.81 22H13.09C13.44 22 13.69 21.64 13.65 21.29C13.61 20.91 13.63 20.46 13.75 19.94C13.77 19.87 13.75 19.79 13.69 19.73L13.47 19.51C12.62 18.65 12.31 17.61 12.61 16.66C12.92 15.72 13.78 15.06 14.97 14.86L15.27 14.81L15.54 14.27C16.09 13.15 16.99 12.5 18 12.5C19.01 12.5 19.91 13.15 20.46 14.27L20.61 14.58C20.68 14.73 20.82 14.83 20.98 14.86C21.07 14.88 21.16 14.9 21.25 14.92C21.6 15.01 22 14.73 22 14.36V7.81C22 4.17 19.83 2 16.19 2ZM16.26 8.96L13.95 11.94C13.66 12.31 13.25 12.55 12.78 12.6C12.32 12.66 11.85 12.53 11.49 12.24L9.66 10.82C9.59 10.76 9.51 10.76 9.47 10.77C9.43 10.77 9.36 10.79 9.3 10.87L6.92 13.96C6.77 14.15 6.55 14.25 6.32 14.25C6.16 14.25 6 14.2 5.86 14.09C5.53 13.84 5.47 13.37 5.72 13.04L8.1 9.95C8.39 9.58 8.8 9.34 9.27 9.28C9.74 9.22 10.2 9.35 10.57 9.64L12.4 11.08C12.47 11.14 12.54 11.13 12.59 11.13C12.63 11.13 12.7 11.11 12.76 11.03L15.07 8.05C15.32 7.72 15.79 7.66 16.12 7.92C16.46 8.17 16.51 8.64 16.26 8.96Z">
+                            </path>
+                        </g>
+                    </svg>
+                </div>
+                Favoritos
+            </li>
+            <!-- <li class="btn text-white p-3 d-flex align-items-center justify-content-start flex-row gap-2 mb-1"
+                (click)="sendMenuOption('users')"
+                [ngClass]="{'menu-option-selected' : menuOptionValue === 'users'}">
+                <div class="icon stroke">
+                    <svg width="24" height="24" viewBox="0 0 518 684" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M259 292.333C332.638 292.333 392.333 232.638 392.333 159C392.333 85.362 332.638 25.6666 259 25.6666C185.362 25.6666 125.667 85.362 125.667 159C125.667 232.638 185.362 292.333 259 292.333Z"
+                            stroke="white" stroke-width="50" />
+                        <path
+                            d="M359 646.17C328.69 654.397 294.787 659 259 659C130.134 659 25.6667 599.303 25.6667 525.667C25.6667 452.03 130.134 392.333 259 392.333C387.867 392.333 492.333 452.03 492.333 525.667C492.333 537.177 489.78 548.347 484.983 559"
+                            stroke="white" stroke-width="50" stroke-linecap="round" />
+                    </svg>
+                </div>
+                Usuários
+            </li>
+            <li class="btn text-white p-3 d-flex align-items-center justify-content-start flex-row gap-2 mb-1"
+                (click)="sendMenuOption('setting')"
+                [ngClass]="{'menu-option-selected' : menuOptionValue === 'setting'}">
+                <div class="icon stroke">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <g id="style=fill">
+                                <g id="setting">
+                                    <path id="Subtract" fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M10.8946 3.00654C10.2226 1.87704 8.75191 1.45656 7.59248 2.14193L5.86749 3.12906C4.59518 3.85639 4.16378 5.48726 4.8906 6.74522L4.89112 6.74611C5.26606 7.39298 5.20721 7.8062 5.09018 8.00929C4.97308 8.21249 4.64521 8.47001 3.9 8.47001C2.43322 8.47001 1.25 9.66837 1.25 11.12V12.88C1.25 14.3317 2.43322 15.53 3.9 15.53C4.64521 15.53 4.97308 15.7875 5.09018 15.9907C5.20721 16.1938 5.26606 16.607 4.89112 17.2539L4.8906 17.2548C4.16378 18.5128 4.59558 20.1439 5.8679 20.8712L7.59257 21.8581C8.75199 22.5434 10.2226 22.123 10.8946 20.9935L11.0091 20.7958C11.3841 20.1489 11.773 19.9925 12.0087 19.9925C12.2434 19.9925 12.6293 20.1476 12.9993 20.793L13.0009 20.7958L13.1109 20.9858L13.1154 20.9935C13.7874 22.123 15.258 22.5434 16.4174 21.8581L18.1425 20.871C19.4157 20.1431 19.8444 18.5235 19.1212 17.2579L19.1189 17.2539C18.7439 16.607 18.8028 16.1938 18.9198 15.9907C19.0369 15.7875 19.3648 15.53 20.11 15.53C21.5768 15.53 22.76 14.3317 22.76 12.88V11.12C22.76 9.65323 21.5616 8.47001 20.11 8.47001C19.3648 8.47001 19.0369 8.21249 18.9198 8.00929C18.8028 7.8062 18.7439 7.39298 19.1189 6.74611L19.1194 6.74522C19.8463 5.48713 19.4147 3.85604 18.1421 3.12883L16.4175 2.14193C15.2581 1.45656 13.7874 1.877 13.1154 3.00651L13.0009 3.20423C12.6259 3.85115 12.237 4.00751 12.0012 4.00751C11.7666 4.00751 11.3807 3.85247 11.0107 3.20701L11.0091 3.20423L10.8991 3.01421L10.8946 3.00654ZM15 12C15 13.6569 13.6569 15 12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12Z">
+                                    </path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+                Configurações
+            </li> -->
+        </ul>
+        <div class="h-25 w-100 d-flex justify-content-center align-items-center">
+            <button class="btn text-white d-flex justify-content-center align-items-center col-6 gap-2"
+                (click)="sendMenuOption('logout')">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <path fill-rule="evenodd"
+                            d="M10.796 2.244C12.653 1.826 14 3.422 14 5v14c0 1.578-1.347 3.174-3.204 2.756C6.334 20.752 3 16.766 3 12s3.334-8.752 7.796-9.756zm5.497 6.049a1 1 0 0 1 1.414 0l3 3a1 1 0 0 1 0 1.414l-3 3a1 1 0 0 1-1.414-1.414L17.586 13H9a1 1 0 1 1 0-2h8.586l-1.293-1.293a1 1 0 0 1 0-1.414z"
+                            clip-rule="evenodd"></path>
+                    </g>
+                </svg>
+                Sair
+            </button>
+        </div>
+    </section>
+</aside>
+
+<aside class="position-fixed z-3 mt-6 showMobileSidebar" [ngClass]="{'open': toggleMobileSidebarOption}">
+    <section
+        class="w-100 bg-pink rounded rounded-lg p-2 text-white d-flex justify-content-center align-items-center flex-column h-50">
+        <div class="d-flex flex-row justify-content-center m-0 mt-3 w-75 h-90">
+            <div class="d-flex justify-content-center align-items-center flex-column">
+                <p class="m-0 me-3 w-100">Olá, <span class="text-white fw-medium">{{username}}</span></p>
+                <span class="w-100 text-end me-5 small">{{profileType}}</span>
+            </div>
+            <div class="w-60 d-flex justify-content-center align-items-center">
+                <img class="w-100 rounded rounded-circle" src={{profile_picture}} alt="Foto de perfil do usuário">
+            </div>
+        </div>
+        <ul class="mt-4 list-unstyled m-0 h-100 w-75">
+            <li class="btn text-white p-3 d-flex align-items-center justify-content-center flex-row gap-2 mb-1"
+                (click)="sendMenuOption('dashboard')"
+                [ngClass]="{'menu-option-selected' : menuOptionValue === 'dashboard'}">
+                <div class="icon stroke">
+                    <svg fill="#ffffff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="dashboard"
+                        class="icon glyph">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <rect x="2" y="2" width="9" height="11" rx="2"></rect>
+                            <rect x="13" y="2" width="9" height="7" rx="2"></rect>
+                            <rect x="2" y="15" width="9" height="7" rx="2"></rect>
+                            <rect x="13" y="11" width="9" height="11" rx="2"></rect>
+                        </g>
+                    </svg>
+                </div>
+                Dashboard
+            </li>
+            <li class="btn text-white p-3 d-flex align-items-center justify-content-center flex-row gap-2 mb-1"
+                (click)="sendMenuOption('favorite')"
+                [ngClass]="{'menu-option-selected' : menuOptionValue === 'favorite'}">
+                <div class="icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M19.1199 14.9414L19.4399 15.5914C19.5999 15.9114 20.0099 16.2114 20.3499 16.2714L20.7799 16.3414C22.0899 16.5614 22.3899 17.5214 21.4599 18.4614L21.0599 18.8614C20.7899 19.1314 20.6499 19.6514 20.7299 20.0314L20.7799 20.2714C21.1399 21.8514 20.2999 22.4614 18.9299 21.6314L18.6399 21.4514C18.2899 21.2414 17.7099 21.2414 17.3599 21.4514L17.0699 21.6314C15.6899 22.4614 14.8599 21.8514 15.2199 20.2714L15.2699 20.0314C15.3499 19.6614 15.2099 19.1314 14.9399 18.8614L14.5399 18.4614C13.6099 17.5114 13.9099 16.5614 15.2199 16.3414L15.6499 16.2714C15.9999 16.2114 16.3999 15.9114 16.5599 15.5914L16.8799 14.9414C17.4999 13.6914 18.4999 13.6914 19.1199 14.9414Z">
+                            </path>
+                            <path
+                                d="M16.19 2H7.81C4.17 2 2 4.17 2 7.81V16.19C2 19.83 4.17 22 7.81 22H13.09C13.44 22 13.69 21.64 13.65 21.29C13.61 20.91 13.63 20.46 13.75 19.94C13.77 19.87 13.75 19.79 13.69 19.73L13.47 19.51C12.62 18.65 12.31 17.61 12.61 16.66C12.92 15.72 13.78 15.06 14.97 14.86L15.27 14.81L15.54 14.27C16.09 13.15 16.99 12.5 18 12.5C19.01 12.5 19.91 13.15 20.46 14.27L20.61 14.58C20.68 14.73 20.82 14.83 20.98 14.86C21.07 14.88 21.16 14.9 21.25 14.92C21.6 15.01 22 14.73 22 14.36V7.81C22 4.17 19.83 2 16.19 2ZM16.26 8.96L13.95 11.94C13.66 12.31 13.25 12.55 12.78 12.6C12.32 12.66 11.85 12.53 11.49 12.24L9.66 10.82C9.59 10.76 9.51 10.76 9.47 10.77C9.43 10.77 9.36 10.79 9.3 10.87L6.92 13.96C6.77 14.15 6.55 14.25 6.32 14.25C6.16 14.25 6 14.2 5.86 14.09C5.53 13.84 5.47 13.37 5.72 13.04L8.1 9.95C8.39 9.58 8.8 9.34 9.27 9.28C9.74 9.22 10.2 9.35 10.57 9.64L12.4 11.08C12.47 11.14 12.54 11.13 12.59 11.13C12.63 11.13 12.7 11.11 12.76 11.03L15.07 8.05C15.32 7.72 15.79 7.66 16.12 7.92C16.46 8.17 16.51 8.64 16.26 8.96Z">
+                            </path>
+                        </g>
+                    </svg>
+                </div>
+                Favoritos
+            </li>
+        </ul>
+        <div class="h-25 w-100 d-flex justify-content-center align-items-center">
+            <button class="btn text-white d-flex justify-content-center align-items-center col-6 gap-2"
+                (click)="sendMenuOption('logout')">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <path fill-rule="evenodd"
+                            d="M10.796 2.244C12.653 1.826 14 3.422 14 5v14c0 1.578-1.347 3.174-3.204 2.756C6.334 20.752 3 16.766 3 12s3.334-8.752 7.796-9.756zm5.497 6.049a1 1 0 0 1 1.414 0l3 3a1 1 0 0 1 0 1.414l-3 3a1 1 0 0 1-1.414-1.414L17.586 13H9a1 1 0 1 1 0-2h8.586l-1.293-1.293a1 1 0 0 1 0-1.414z"
+                            clip-rule="evenodd"></path>
+                    </g>
+                </svg>
+                Sair
+            </button>
+        </div>
+    </section>
+</aside>

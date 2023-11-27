@@ -1,0 +1,30 @@
+<header
+    class="mobile-navbar col-12 position-fixed z-2 d-flex align-items-center justify-content-center flex-row bg-white">
+    <div (click)="sendMobileNavbarOption(!toggleMobileSidebarOption)"
+        class="z-2 px-4 position-absolute d-flex align-items-center justify-content-top w-100">
+        <svg *ngIf="toggleMobileSidebarOption === false" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg" class="w-40">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M4 5C3.44772 5 3 5.44772 3 6C3 6.55228 3.44772 7 4 7H20C20.5523 7 21 6.55228 21 6C21 5.44772 20.5523 5 20 5H4ZM3 12C3 11.4477 3.44772 11 4 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H4C3.44772 13 3 12.5523 3 12ZM3 18C3 17.4477 3.44772 17 4 17H20C20.5523 17 21 17.4477 21 18C21 18.5523 20.5523 19 20 19H4C3.44772 19 3 18.5523 3 18Z"
+                    fill="#DB0185"></path>
+            </g>
+        </svg>
+        <svg *ngIf="toggleMobileSidebarOption === true" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" class="w-40" fill="#000000">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+                <path fill="#DB0185"
+                    d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504 738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512 828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496 285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512 195.2 285.696a64 64 0 0 1 0-90.496z">
+                </path>
+            </g>
+        </svg>
+    </div>
+    <div class="col-6 d-flex justify-content-center align-items-center h-90 w-256">
+        <img src="../assets/logo.svg"
+            alt="Logo da empresa Di2win, em letras pretas, com o número 2 em cor rosa, e um icone rosa a frente"
+            class="w-75">
+    </div>
+</header>
