@@ -34,6 +34,8 @@ $ npm install
 
 ## Running the app
 
+Renamed the file from '.env.example' to '.env'
+
 ```bash
 # development
 $ npm run start
@@ -43,6 +45,34 @@ $ npm run dev
 
 # production mode
 $ npm run start:prod
+```
+
+## Docker
+
+Renamed the file from '.env.production.example' to '.env.production'
+
+```bash
+# Set up the Dockerfile requirements.
+$ make file
+
+# Bring up/start the docker-compose
+$ make up
+
+# Stop the docker-compose
+$ make stop
+
+# To stop the container, its volumes, and anything related to it.
+# Remove the image created by the docker-compose."
+$ make kill
+
+# Run make stop and make kill.
+$ make down
+
+# Run make stop and make kill, then restart the docker-compose.
+$ make remake
+
+# Stop and restart the docker-compose
+$ make edit
 ```
 
 ## Test

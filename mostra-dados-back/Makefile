@@ -1,4 +1,4 @@
-CONTAINER_NAME = mostra-dados-front
+CONTAINER_NAME = mostra-dados-back
 
 # Set up the Dockerfile requirements.
 file:
