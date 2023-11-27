@@ -74,14 +74,14 @@ svg {
 
 /* Color */
 .text-pink{
-	color: #DB0185;
+	color: #DE338B;
 }
 
 
 
 /* Background */
 .bg-pink{
-	background: #DB0185;
+	background: #DE338B;
 }
 
 .bg-gray{
@@ -96,12 +96,12 @@ svg {
 /* Button */
 .btn:hover{
 	background: rgb(255, 214, 239);
-	color: #DB0185 !important;
+	color: #DE338B !important;
 }
 
 .btn-save-to-db{
 	background: rgb(255, 214, 239);
-	color: #DB0185 !important;
+	color: #DE338B !important;
 }
 
 
@@ -187,7 +187,7 @@ svg {
 }
 
 .border-pink{
-	border: 1px dashed #DB0185;
+	border: 1px dashed #DE338B;
 }
 
 
@@ -212,7 +212,7 @@ svg {
 }
 
 .mat-icon{
-	color: #DB0185;
+	color: #DE338B;
 }
 
 /* Teste */

@@ -180,12 +180,12 @@
             <div class="w-100 max-w-200 h-39 mx-4 d-flex align-items-start justify-content-center flex-row gap-2 mt-2">
 
                 <button class="w-100 h-100 btn text-14 rounded rounded-lg bg-pink text-white p-2"
-                    *ngIf="(selectedOptions >= 2 || (selectedOptions === 1 && readyQueries.includes(userOptions.selectedOptions[0])))"
+                    *ngIf="(countSelectedOptions === 2 || (countSelectedOptions === 1 && readyQueries.includes(userOptions.selectedOptions[0])))"
                     (click)="openChart()">
                     Proximo
                 </button>
 
-                <select *ngIf="(showChartOptions) && (selectedOptions >= 2)" (change)="setChart($event)" name="chart"
+                <select *ngIf="(showChartOptions) && (countSelectedOptions === 2)" (change)="setChart($event)" name="chart"
                     id="chart" class="select h-100 text-14 rounded rounded-lg bg-pink text-white p-2 w-100 pointer">
                     <option value="" disabled selected>Selecione um gráfico</option>
                     <option value="pie">Pizza</option>
@@ -197,7 +197,7 @@
                 </select>
 
                 <select
-                    *ngIf="(showChartOptions) && (selectedOptions === 1) && readyQueries.includes(userOptions.selectedOptions[0])"
+                    *ngIf="(showChartOptions) && (countSelectedOptions === 1) && readyQueries.includes(userOptions.selectedOptions[0])"
                     (change)="setChart($event)" name="chart" id="chart"
                     class="select h-100 rounded rounded-lg bg-pink text-white p-2 w-100 pointer">
                     <option value="" disabled selected>Selecione um gráfico</option>
@@ -221,7 +221,7 @@
                         <mat-date-range-picker touchUi #picker></mat-date-range-picker>
                     </mat-form-field>
                 </div>
-                <div *ngIf="(!userOptions.selectedOptions.includes('doc_count') && !userOptions.selectedOptions.includes('only_doc_count'))"
+                <div *ngIf="shouldDisplayDiv()"
                     class="w-75 h-340 py-2 d-flex flex-column align-items-center justify-content-center gap-2">
                     <span class="my-1 text-white">Selecione uma Agregação</span>
                     <div class="d-flex flex-row align-items-center justify-content-center gap-2">

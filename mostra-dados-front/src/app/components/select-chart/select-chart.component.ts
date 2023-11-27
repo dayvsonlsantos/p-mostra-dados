@@ -33,7 +33,7 @@ export class SelectChartComponent implements OnInit {
   };
 
   //(en) Number of options selected by the user
-  selectedOptions: number = this.userOptions.selectedOptions.length;
+  countSelectedOptions: number = this.userOptions.selectedOptions.length;
 
   //(en) Display or hide chart options
   showChartOptions: boolean = false;
@@ -82,7 +82,7 @@ export class SelectChartComponent implements OnInit {
       this.userOptions.selectedOptions = this.userOptions.selectedOptions.filter(item => item !== choice);
 
       //(en) Decreases the count of selected options by 1.
-      --this.selectedOptions;
+      --this.countSelectedOptions;
 
       //(en) Hides the charts.
       this.showChartOptions = false;
@@ -90,7 +90,7 @@ export class SelectChartComponent implements OnInit {
     } else {
 
       //(en) Counts how many options are selected
-      this.selectedOptions += 1;
+      this.countSelectedOptions += 1;
 
       //(en) Since the selected option wasn't found in the array, it is added.
       switch (choice) {
@@ -245,19 +245,23 @@ export class SelectChartComponent implements OnInit {
 
   //(en) Retrieve the database columns.
   fetchColumns() {
-    this.dataService.getColumns('extracts')
+
+    this.dataService.getExtractsColumn()
       .subscribe(data => {
         this.extractsColumnsOption = data
           .filter(item => item.column_name !== 'id' && item.column_name !== 'user_id')
           .map(item => item.column_name)
-        this.extractsColumnsOption.push('doc_count')
+        this.extractsColumnsOption.push('doc_count');
       });
-    this.dataService.getColumns('users')
+
+    this.dataService.getUsersColumn()
       .subscribe(data => {
         this.usersColumnsOption = data
           .filter(item => item.column_name !== 'id')
           .map(item => item.column_name)
       });
+
+
     this.readyQueries = ['only_doc_count', 'only_pages_process', 'most_analyzed_doc', 'doc_most_analyzed_pages', 'user_most_analyzed_doc', 'segment_most_analyzed_doc', 'user_most_analyzed_pages', 'segment_most_analyzed_pages']
 
     this.dataService.getUsers()
@@ -291,13 +295,23 @@ export class SelectChartComponent implements OnInit {
       timeGrouping: 'month',
       specificFilter: 'u.name IS NOT NULL',
     };
-    this.selectedOptions = 0;
+    this.countSelectedOptions = 0;
     this.showChartOptions = false;
   }
 
   setAggregate(value: string) {
     if (this.userOptions.aggregate === value) {
-      this.userOptions.aggregate = '';
+      if (
+        this.userOptions.selectedOptions.includes('pages_process') ||
+        this.userOptions.selectedOptions.includes('only_pages_process') ||
+        this.userOptions.selectedOptions.includes('doc_most_analyzed_pages') ||
+        this.userOptions.selectedOptions.includes('user_most_analyzed_pages') ||
+        this.userOptions.selectedOptions.includes('segment_most_analyzed_pages')
+      ) {
+        this.userOptions.aggregate = 'sum';
+      } else {
+        this.userOptions.aggregate = '';
+      }
     } else {
       this.userOptions.aggregate = value;
     }
@@ -341,13 +355,27 @@ export class SelectChartComponent implements OnInit {
     return 'lower(\'' + result + '\')';
   }
 
-  
-  setSpecificFilter(specificFilterOption: string){
+
+  setSpecificFilter(specificFilterOption: string) {
     if (this.userOptions.specificFilter === specificFilterOption) {
       this.userOptions.specificFilter = 'u.name IS NOT NULL';
     } else {
       this.userOptions.specificFilter = specificFilterOption
     }
+  }
+
+  shouldDisplayDiv() {
+    return (
+      !this.userOptions.selectedOptions.includes('doc_count') &&
+      !this.userOptions.selectedOptions.includes('only_doc_count') &&
+      !this.userOptions.selectedOptions.includes('most_analyzed_doc') &&
+      !this.userOptions.selectedOptions.includes('doc_most_analyzed_pages') &&
+      !this.userOptions.selectedOptions.includes('user_most_analyzed_doc') &&
+      !this.userOptions.selectedOptions.includes('user_most_analyzed_pages') &&
+      !this.userOptions.selectedOptions.includes('segment_most_analyzed_doc') &&
+      !this.userOptions.selectedOptions.includes('segment_most_analyzed_pages')
+      //(en) It will only be displayed if the value is 'only_pages_process'.
+    );
   }
 
   ngOnInit(): void {
@@ -367,12 +395,12 @@ export class SelectChartComponent implements OnInit {
 
         this.userOptions.chartType = this.chartValues.chartType;
 
-        this.selectedOptions = this.chartValues.selectedOptions.length;
+        this.countSelectedOptions = this.chartValues.selectedOptions.length;
 
         this.userOptions.aggregate = this.chartValues.aggregate;
 
         this.userOptions.specificFilter = this.chartValues.specificFilter;
-        
+
         this.userOptions.timeGrouping = this.chartValues.timeGrouping;
 
       }

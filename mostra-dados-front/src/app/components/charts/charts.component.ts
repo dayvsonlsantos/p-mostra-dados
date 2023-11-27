@@ -142,7 +142,7 @@ export class ChartsComponent implements OnInit {
                 position: 'insideTop' // Exibe o rótulo dentro da barra
               },
               itemStyle: {  // Defina a cor das barras aqui
-                color: '#DB0185'  // Altere 'blue' para a cor desejada
+                color: '#DE338B'  // Altere 'blue' para a cor desejada
               },
 
               //(en) Getting the values of the 'value' property from each object in the 'mappedData' array
@@ -184,7 +184,7 @@ export class ChartsComponent implements OnInit {
               type: 'bar',
               data: mappedData.map(item => item.value),
               itemStyle: {
-                color: '#DB0185'
+                color: '#DE338B'
               }
             }
           ]
@@ -202,7 +202,7 @@ export class ChartsComponent implements OnInit {
         }, 0);
 
         const colors = [
-          '#DB0185', '#BD0067', '#8C00D8', '#5c1c7c', '#350020', '#504A4C',
+          '#DE338B', '#BD0067', '#8C00D8', '#5c1c7c', '#350020', '#504A4C',
           '#FF00A5', '#9F0049', '#7900E4', '#8A2BE2', '#9e2984', '#A38474',
           '#f9a5ff', '#81002B', '#9E33E7', '#4B0082', '#4B0082',
           '#f463ff', '#63000D', '#FF67FF', '#483D8B', '#800080',
@@ -280,10 +280,10 @@ export class ChartsComponent implements OnInit {
               type: 'line',
               smooth: true,
               lineStyle: {
-                color: '#DB0185'
+                color: '#DE338B'
               },
               itemStyle: {  // Defina a cor das barras aqui
-                color: '#DB0185'  // Altere 'blue' para a cor desejada
+                color: '#DE338B'  // Altere 'blue' para a cor desejada
               },
               label: {
                 show: true,  // Exibe os valores nos pontos
@@ -314,10 +314,10 @@ export class ChartsComponent implements OnInit {
               type: 'line',
               areaStyle: {},
               lineStyle: {
-                color: '#DB0185'
+                color: '#DE338B'
               },
               itemStyle: {  // Defina a cor das barras aqui
-                color: '#DB0185'  // Altere 'blue' para a cor desejada
+                color: '#DE338B'  // Altere 'blue' para a cor desejada
               },
               label: {
                 show: true,  // Exibe os valores nos pontos
@@ -342,7 +342,7 @@ export class ChartsComponent implements OnInit {
               data: mappedData.map(item => item.value),
               type: 'scatter',
               itemStyle: {  // Defina a cor das barras aqui
-                color: '#DB0185'  // Altere 'blue' para a cor desejada
+                color: '#DE338B'  // Altere 'blue' para a cor desejada
               },
               label: {
                 show: true,  // Exibe os valores nos pontos
@@ -405,7 +405,6 @@ export class ChartsComponent implements OnInit {
 
     this.dataService.getData(this.userOptions).subscribe((dataColumns: string[]) => {
       this.openChart(dataColumns);
-
     });
 
   }

@@ -7,19 +7,19 @@
 }
 
 .btn:hover svg{
-    fill: #DB0185;
+    fill: #DE338B;
 }
 
 .btn:hover .stroke{
-    stroke: #DB0185;
+    stroke: #DE338B;
 }
 
 .btn:hover .stroke svg path{
-    stroke: #DB0185;
+    stroke: #DE338B;
 }
 
 .btn button:hover svg path{
-    stroke: #DB0185;
+    stroke: #DE338B;
 }
 
 .my-sidebar ul li .icon{
@@ -35,7 +35,7 @@
 }
 
 .menu-option-selected:hover{
-    color: #DB0185 !important;
+    color: #DE338B !important;
 }
 
 .menu-option-selected svg{
