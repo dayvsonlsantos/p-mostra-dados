@@ -17,4 +17,6 @@ export class FavoriteComponent {
   card07 = 'favorite-07'
   card08 = 'favorite-08'
 
+  @Input() userID!: number;
+
 }

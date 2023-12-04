@@ -5,7 +5,7 @@ import { ExtractModule } from './app/extract/extract.module';
 import { UsersModule } from './app/users/users.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { DataModule } from './app/data/data.module';
+// import { DataModule } from './app/data/data.module';
 
 @Module({
   imports: [
@@ -19,11 +19,11 @@ import { DataModule } from './app/data/data.module';
       database: process.env.DB_DATABASE,
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
-      synchronize: false,
+      synchronize: true,
       entities: [__dirname + '/**/*.entity{.js,.ts}'],
       ssl: true,
     }),
-    DataModule
+    // DataModule
   ],
   controllers: [AppController],
   providers: [AppService],

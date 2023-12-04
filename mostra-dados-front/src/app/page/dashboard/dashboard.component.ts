@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { UserOptions } from 'src/app/interfaces/user-options';
 
 @Component({
@@ -6,7 +6,7 @@ import { UserOptions } from 'src/app/interfaces/user-options';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   card01 = 'dashboard-01'
   card02 = 'dashboard-02'
   card03 = 'dashboard-03'
@@ -19,6 +19,15 @@ export class DashboardComponent {
   getCurrentDate = new Date();
 
   currentDate = this.getCurrentDate.toISOString().slice(0, 10);
+
+  @Input() userID!: number;
+
+  ngOnInit() {
+    // Check if userID is defined before logging
+    if (this.userID !== undefined) {
+      console.log('User ID:', this.userID);
+    }
+  }
 
   //(pt-br) caso deseje passar o specificFilter, como algum dos 
   // valores de 'Selecione o Tipo de Documento', 'Selecione o Segmento' 
@@ -33,6 +42,7 @@ export class DashboardComponent {
   // like: setSpecificFilter('lower(e.doc_type) = ' + this.removeItemStyle(doc)).
   
   dashboard01Data: UserOptions = {
+    user_id: this.userID,
     cardValueID: 'dashboard-01',
     chartType: 'uniqueValue',
     selectedOptions: ['only_doc_count'],
@@ -44,6 +54,7 @@ export class DashboardComponent {
   }
 
   dashboard02Data: UserOptions = {
+    user_id: this.userID,
     cardValueID: 'dashboard-02',
     chartType: 'uniqueValue',
     selectedOptions: ['only_pages_process'],
@@ -55,6 +66,7 @@ export class DashboardComponent {
   }
 
   dashboard03Data: UserOptions = {
+    user_id: this.userID,
     cardValueID: 'dashboard-03',
     chartType: 'uniqueValue',
     selectedOptions: ['segment_most_analyzed_pages'],
@@ -66,6 +78,7 @@ export class DashboardComponent {
   }
 
   dashboard04Data: UserOptions = {
+    user_id: this.userID,
     cardValueID: 'dashboard-04',
     chartType: 'line',
     selectedOptions: ['created_at', 'pages_process'],
@@ -77,6 +90,7 @@ export class DashboardComponent {
   }
 
   dashboard05Data: UserOptions = {
+    user_id: this.userID,
     cardValueID: 'dashboard-05',
     chartType: 'bar',
     selectedOptions: ['doc_type', 'doc_count'],
@@ -88,6 +102,7 @@ export class DashboardComponent {
   }
 
   dashboard06Data: UserOptions = {
+    user_id: this.userID,
     cardValueID: 'dashboard-06',
     chartType: 'horizontal-bar',
     selectedOptions: ['doc_type', 'pages_process'],
@@ -99,6 +114,7 @@ export class DashboardComponent {
   }
 
   dashboard07Data: UserOptions = {
+    user_id: this.userID,
     cardValueID: 'dashboard-07',
     chartType: 'pie',
     selectedOptions: ['segment', 'pages_process'],
@@ -110,6 +126,7 @@ export class DashboardComponent {
   }
 
   dashboard08Data: UserOptions = {
+    user_id: this.userID,
     cardValueID: 'dashboard-08',
     chartType: 'pie',
     selectedOptions: ['name', 'doc_count'],
@@ -119,4 +136,5 @@ export class DashboardComponent {
     timeGrouping: 'month',
     specificFilter: "u.name IS NOT NULL",
   }
+  
 }

@@ -1,10 +1,10 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { UsersEntity } from "../users/users.entity";
 
 @Entity({ name: 'data' })
 export class DataEntity {
 
-    @PrimaryColumn({type: 'int', nullable: false})
+    @PrimaryGeneratedColumn({type: 'bigint'})
     id: number
 
     @ManyToOne(() => UsersEntity, user => user.id)

@@ -23,5 +23,6 @@ export class AppComponent {
   profile_picture = '../assets/profilePicture.png';
   username = 'Fulano';
   profileType = 'Admin';
+  userID = 2;
 
 }

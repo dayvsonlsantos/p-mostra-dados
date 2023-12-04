@@ -2,13 +2,16 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UsersEntity } from './users.entity';
 import { Repository } from 'typeorm';
+import { DataEntity } from '../data/data.entity';
 
 @Injectable()
 export class UsersService {
 
     constructor(
         @InjectRepository(UsersEntity)
-        private readonly usersRepository: Repository<UsersEntity>
+        private readonly usersRepository: Repository<UsersEntity>,
+        @InjectRepository(DataEntity) // Inject DataEntity repository
+        private readonly dataRepository: Repository<DataEntity>,
     ) { }
 
     async createUser(name: string, segment: string): Promise<UsersEntity> {
@@ -45,5 +48,10 @@ export class UsersService {
             .andWhere('table_name = :tableOption', { tableOption: 'users' })
             .groupBy('column_name')
             .getRawMany();
+    }
+
+    async createData(data: DataEntity): Promise<DataEntity> {
+        const newData = this.dataRepository.create(data);
+        return this.dataRepository.save(newData);
     }
 }

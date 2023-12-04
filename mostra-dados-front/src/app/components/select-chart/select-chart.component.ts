@@ -20,7 +20,10 @@ export class SelectChartComponent implements OnInit {
 
   currentDate = this.getCurrentDate.toISOString().slice(0, 10);
 
+  @Input() userID!: number;
+
   userOptions: UserOptions = {
+    user_id: this.userID,
     cardValueID: '',
     chartType: 'empty', //(en) Receives the chart chosen by the user.
     selectedOptions: [], //(en)Receives the Options selected by the user
@@ -286,6 +289,7 @@ export class SelectChartComponent implements OnInit {
   //(en) Clears all data selected by the user.
   resetData() {
     this.userOptions = {
+      user_id: this.userID,
       cardValueID: this.cardID,
       chartType: 'empty',
       selectedOptions: [],
@@ -318,7 +322,19 @@ export class SelectChartComponent implements OnInit {
   }
 
   saveToDatabase() {
-    console.log(this.userOptions)
+    console.log(this.userOptions);
+
+    this.dataService.sendFavorite(this.userOptions)
+      .subscribe(
+        response => {
+          console.log('Resposta do servidor:', response);
+          // Aqui você pode adicionar lógica adicional para lidar com a resposta do servidor
+        },
+        error => {
+          console.error('Erro ao enviar para o servidor:', error);
+          // Aqui você pode adicionar lógica para lidar com erros
+        }
+      );
   }
 
   removeItemStyle(item: string): string {
@@ -383,6 +399,8 @@ export class SelectChartComponent implements OnInit {
 
     //(en) Assigns the value of the ID
     this.userOptions.cardValueID = this.cardID;
+
+    this.userOptions.user_id = this.userID;
 
     //(en) Sets the calendar language to Portuguese (Brazilian) in Angular
     this.dateAdapter.setLocale('pt-BR');

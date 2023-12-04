@@ -1,6 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UsersEntity } from './users.entity';
+import { DataEntity } from '../data/data.entity';
 
 @Controller('users')
 export class UsersController {
@@ -26,5 +27,10 @@ export class UsersController {
     @Get('/getSegments')
     async getSegments(): Promise<UsersEntity[]> {
         return this.usersService.getSegments();
+    }
+
+    @Post('/createData')
+    async createData(@Body() data: DataEntity): Promise<DataEntity> {
+        return this.usersService.createData(data);
     }
 }

@@ -47,6 +47,12 @@ export class DataService {
     return this.http.get<any[]>(`${environment.api}/extracts/getQuery?${queryParams}`);
   }
 
+  sendFavorite(userOptions: UserOptions): Observable<any[]> {
+    // Use the userOptions as the request body
+    console.log(this.http.post<any[]>(`${environment.api}/users/createData`, userOptions))
+    return this.http.post<any[]>(`${environment.api}/users/createData`, userOptions);
+  }
+
 
   getExtractsColumn(): Observable<any[]> {
     return this.http.get<any[]>(`${environment.api}/extracts/getExtractColumns`)

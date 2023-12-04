@@ -185,8 +185,9 @@
                     Proximo
                 </button>
 
-                <select *ngIf="(showChartOptions) && (countSelectedOptions === 2)" (change)="setChart($event)" name="chart"
-                    id="chart" class="select h-100 text-14 rounded rounded-lg bg-pink text-white p-2 w-100 pointer">
+                <select *ngIf="(showChartOptions) && (countSelectedOptions === 2)" (change)="setChart($event)"
+                    name="chart" id="chart"
+                    class="select h-100 text-14 rounded rounded-lg bg-pink text-white p-2 w-100 pointer">
                     <option value="" disabled selected>Selecione um gráfico</option>
                     <option value="pie">Pizza</option>
                     <option value="bar">Barras</option>
@@ -242,7 +243,8 @@
                     *ngIf="isFilter && userOptions.selectedOptions.includes('created_at') && (userOptions.selectedOptions.includes('doc_count') || userOptions.selectedOptions.includes('pages_process'))">
                     <span class="my-2 text-white">Selecione uma opção</span>
                     <div class="d-flex flex-row align-items-center justify-content-center gap-2">
-                        <button *ngIf="userOptions.selectedOptions.includes('created_at')" [ngClass]="{ 'bg-gray': userOptions.timeGrouping === 'day' }"
+                        <button *ngIf="userOptions.selectedOptions.includes('created_at')"
+                            [ngClass]="{ 'bg-gray': userOptions.timeGrouping === 'day' }"
                             class="btn text-14 rounded rounded-lg bg-pink text-white p-2"
                             (click)="userOptions.timeGrouping = 'day'">Dia</button>
                         <button [ngClass]="{ 'bg-gray': userOptions.timeGrouping === 'month' }"
