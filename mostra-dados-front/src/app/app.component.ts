@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   profile_picture = '../assets/profilePicture.png';
   username = 'Fulano';
   profileType = 'Admin';
-  userID = 2;
+  userID = 1;
 
   constructor(
     //(en) Retrieves data from the database.

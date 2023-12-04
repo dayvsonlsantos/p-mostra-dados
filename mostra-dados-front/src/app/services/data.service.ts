@@ -49,8 +49,8 @@ export class DataService {
 
   sendFavorite(userOptions: UserOptions): Observable<any[]> {
     // Use the userOptions as the request body
-    console.log(this.http.post<any[]>(`${environment.api}/users/createData`, userOptions))
-    return this.http.post<any[]>(`${environment.api}/users/createData`, userOptions);
+    console.log(this.http.post<any[]>(`${environment.api}/users/createOrUpdateData`, userOptions))
+    return this.http.post<any[]>(`${environment.api}/users/createOrUpdateData`, userOptions);
   }
 
   getFavorite(userId: number) {

@@ -90,6 +90,21 @@ export class SelectChartComponent implements OnInit {
       //(en) Hides the charts.
       this.showChartOptions = false;
 
+      if (this.userOptions.selectedOptions.includes('created_at')) {
+        this.extractsColumnsOption = ['pages_process', 'created_at', 'doc_count']
+        this.usersColumnsOption = []
+      } else if (
+        !this.userOptions.selectedOptions.includes('created_at') && (
+          this.userOptions.selectedOptions.includes('doc_type') ||
+          this.userOptions.selectedOptions.includes('name') ||
+          this.userOptions.selectedOptions.includes('segment'))
+      ) {
+        this.extractsColumnsOption = ['pages_process', 'doc_type', 'doc_count']
+      } else {
+        this.extractsColumnsOption = ['pages_process', 'doc_type', 'created_at', 'doc_count']
+        this.usersColumnsOption = ['name', 'segment']
+      }
+
     } else {
 
       //(en) Counts how many options are selected
@@ -159,6 +174,22 @@ export class SelectChartComponent implements OnInit {
           this.userOptions.selectedOptions.push(choice)
           break;
       }
+
+      if (this.userOptions.selectedOptions.includes('created_at')) {
+        this.extractsColumnsOption = ['pages_process', 'created_at', 'doc_count']
+        this.usersColumnsOption = []
+      } else if (
+        !this.userOptions.selectedOptions.includes('created_at') && (
+          this.userOptions.selectedOptions.includes('doc_type') ||
+          this.userOptions.selectedOptions.includes('name') ||
+          this.userOptions.selectedOptions.includes('segment'))
+      ) {
+        this.extractsColumnsOption = ['pages_process', 'doc_type', 'doc_count']
+      } else {
+        this.extractsColumnsOption = ['pages_process', 'doc_type', 'created_at', 'doc_count']
+        this.usersColumnsOption = ['name', 'segment']
+      }
+
     }
 
   }

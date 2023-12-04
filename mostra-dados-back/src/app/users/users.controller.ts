@@ -29,9 +29,9 @@ export class UsersController {
         return this.usersService.getSegments();
     }
 
-    @Post('/createData')
-    async createData(@Body() data: DataEntity): Promise<DataEntity> {
-        return this.usersService.createData(data);
+    @Post('/createOrUpdateData')
+    async createOrUpdateData(@Body() data: DataEntity): Promise<DataEntity> {
+        return this.usersService.createOrUpdateData(data);
     }
 
     @Get(':userId/data')

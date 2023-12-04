@@ -50,9 +50,19 @@ export class UsersService {
             .getRawMany();
     }
 
-    async createData(data: DataEntity): Promise<DataEntity> {
-        const newData = this.dataRepository.create(data);
-        return this.dataRepository.save(newData);
+    async createOrUpdateData(data: DataEntity): Promise<DataEntity> {
+        // Verifica se já existe um registro com o mesmo cardValueID para o user_id fornecido
+        const existingData = await this.dataRepository.findOne({ where: { user_id: data.user_id, cardValueID: data.cardValueID } });
+
+        if (existingData) {
+            // Se já existe, faça uma atualização (update) copiando todos os campos
+            Object.assign(existingData, data);
+            return this.dataRepository.save(existingData);
+        } else {
+            // Se não existe, faça uma criação (create)
+            const newData = this.dataRepository.create(data);
+            return this.dataRepository.save(newData);
+        }
     }
 
     async getUserData(userId: number): Promise<DataEntity[]> {
