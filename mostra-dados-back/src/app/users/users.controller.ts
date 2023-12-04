@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UsersEntity } from './users.entity';
 import { DataEntity } from '../data/data.entity';
@@ -32,5 +32,10 @@ export class UsersController {
     @Post('/createData')
     async createData(@Body() data: DataEntity): Promise<DataEntity> {
         return this.usersService.createData(data);
+    }
+
+    @Get(':userId/data')
+    async getUserData(@Param('userId') userId: number): Promise<DataEntity[]> {
+        return this.usersService.getUserData(userId);
     }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UsersEntity } from './users.entity';
-import { Repository } from 'typeorm';
+import { Repository, SelectQueryBuilder } from 'typeorm';
 import { DataEntity } from '../data/data.entity';
 
 @Injectable()
@@ -19,11 +19,11 @@ export class UsersService {
         return this.usersRepository.save(newUser);
     }
 
-    async findAllUsers(): Promise<UsersEntity[]>{
+    async findAllUsers(): Promise<UsersEntity[]> {
         return this.usersRepository.createQueryBuilder('users').getMany()
     }
 
-    async getUsers(): Promise<UsersEntity[]>{
+    async getUsers(): Promise<UsersEntity[]> {
         return await this.usersRepository
             .createQueryBuilder('users')
             .select('INITCAP(name) as column_name')
@@ -31,7 +31,7 @@ export class UsersService {
             .getRawMany();
     }
 
-    async getSegments(): Promise<UsersEntity[]>{
+    async getSegments(): Promise<UsersEntity[]> {
         return await this.usersRepository
             .createQueryBuilder('users')
             .select('INITCAP(segment) as column_name')
@@ -53,5 +53,15 @@ export class UsersService {
     async createData(data: DataEntity): Promise<DataEntity> {
         const newData = this.dataRepository.create(data);
         return this.dataRepository.save(newData);
+    }
+
+    async getUserData(userId: number): Promise<DataEntity[]> {
+        const queryBuilder: SelectQueryBuilder<DataEntity> = this.dataRepository.createQueryBuilder('data');
+
+        const result = await queryBuilder
+            .where('data.user_id = :userId', { userId })
+            .getRawMany();
+
+        return result;
     }
 }

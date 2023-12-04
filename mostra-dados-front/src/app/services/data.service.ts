@@ -53,6 +53,10 @@ export class DataService {
     return this.http.post<any[]>(`${environment.api}/users/createData`, userOptions);
   }
 
+  getFavorite(userId: number) {
+    return this.http.get<any[]>(`${environment.api}/users/${userId}/data`);
+  }
+
 
   getExtractsColumn(): Observable<any[]> {
     return this.http.get<any[]>(`${environment.api}/extracts/getExtractColumns`)
