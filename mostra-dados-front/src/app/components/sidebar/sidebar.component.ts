@@ -7,16 +7,19 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
 })
 export class SidebarComponent {
   @Output() menuOption = new EventEmitter<string>();
-  menuOptionValue:string = 'dashboard'
+  menuOptionValue: string = 'dashboard'
 
-  sendMenuOption(value: string){
+  sendMenuOption(value: string) {
     this.menuOption.emit(value);
     this.menuOptionValue = value;
   }
 
   @Input() toggleMobileSidebarOption: boolean = false;
-  @Input() profile_picture!:string;
-  @Input() profileType!:string;
-  @Input() username!:string;
+  @Input() profile_picture!: string;
+  @Input() profileType!: string;
+  @Input() username!: string;
 
+  logout() {
+    console.log('Saindo...')
+  }
 }
