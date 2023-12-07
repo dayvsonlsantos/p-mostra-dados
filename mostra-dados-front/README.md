@@ -243,6 +243,6 @@ $ make edit
 
 ## ![link](https://github.com/dayvsonlsantos/p-mostra-dados/assets/102249811/16d7c222-81dd-46e5-bb01-94eb7057d0f3) Licença
 
-O projeto se encontra sob a licença [GPLv3](https://github.com/dayvsonlsantos/p-near-hospital/blob/main/near-hospital-front/license.md).
+O projeto se encontra sob a licença [GPLv3](https://github.com/dayvsonlsantos/p-mostra-dados/blob/main/LICENSE).
 
 ![Frame 8](https://github.com/dayvsonlsantos/p-mostra-dados/assets/102249811/5932f686-6f03-4b96-a14f-7dcde87ae0f9)
