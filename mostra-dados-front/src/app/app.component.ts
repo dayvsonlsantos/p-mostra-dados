@@ -7,7 +7,7 @@ import { DataService } from './services/data.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'angular_04_echarts';
+  title = 'Mostradados - Di2win';
 
   menuOptionValue: string = 'dashboard';
 
