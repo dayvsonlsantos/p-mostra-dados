@@ -50,20 +50,80 @@ export class UsersService {
             .getRawMany();
     }
 
-    async createOrUpdateData(data: DataEntity): Promise<DataEntity> {
-        // Verifica se já existe um registro com o mesmo cardValueID para o user_id fornecido
-        const existingData = await this.dataRepository.findOne({ where: { user_id: data.user_id, cardValueID: data.cardValueID } });
+    // async createOrUpdateData(data: DataEntity): Promise<DataEntity> {
+    //     if (data.id) {
+    //         // Se o ID está presente, trata-se de uma atualização
+    //         const existingData = await this.dataRepository.findOne({ where: { id: data.id } });
 
-        if (existingData) {
-            // Se já existe, faça uma atualização (update) copiando todos os campos
-            Object.assign(existingData, data);
-            return this.dataRepository.save(existingData);
-        } else {
-            // Se não existe, faça uma criação (create)
-            const newData = this.dataRepository.create(data);
-            return this.dataRepository.save(newData);
+    //         if (existingData) {
+    //             // Atualiza os campos relevantes
+    //             existingData.user_id = data.user_id;
+    //             existingData.cardValueID = data.cardValueID;
+    //             // ... atualize outros campos conforme necessário
+
+    //             return this.dataRepository.save(existingData);
+    //         }
+    //     }
+
+    //     // Se o ID não está presente ou não foi encontrado, trata-se de uma criação
+    //     const newData = this.dataRepository.create(data);
+    //     return this.dataRepository.save(newData);
+    // }
+    async createOrUpdateData(data: DataEntity): Promise<DataEntity> {
+        // Verifica se já existe um registro com o mesmo cardValueID e user_id
+        // console.log('data');
+        // console.log(data);
+
+        const cardValueID = data.cardValueID;
+        const userID = Number(data.user_id);
+
+        try {
+            const existingData: DataEntity | undefined = await this.dataRepository.findOne({
+                where: { cardValueID, user_id: { id: userID } },
+                relations: ['user_id'],
+            });
+
+            // console.log('Testes:');
+            // console.log(existingData);
+
+            if (existingData) {
+                // console.log(existingData.user_id);
+                // console.log(existingData.user_id.id.toString());
+                // console.log(userID.toString());
+
+                if (existingData.user_id.id.toString() === userID.toString()) {
+                    // Se o usuário existir, atualiza os campos
+                    existingData.aggregate = data.aggregate;
+                    existingData.chartType = data.chartType;
+                    existingData.selectedOptions = data.selectedOptions;
+                    existingData.startDate = data.startDate;
+                    existingData.endDate = data.endDate;
+                    existingData.timeGrouping = data.timeGrouping;
+                    existingData.specificFilter = data.specificFilter;
+
+                    // console.log('entrou no if');
+                    // console.log(existingData);
+
+                    return this.dataRepository.save(existingData);
+                } else {
+                    console.log('Usuário encontrado, mas IDs não correspondem.');
+                }
+            } else {
+                // Se não existe, cria um novo registro
+                const newData = this.dataRepository.create(data);
+                // console.log('entrou no else');
+                // console.log(newData);
+                return this.dataRepository.save(newData);
+            }
+        } catch (error) {
+            console.error('Erro ao buscar dados existentes:', error);
+            // Trate o erro conforme necessário, dependendo da lógica do seu aplicativo
+            throw error;
         }
     }
+
+
+
 
     async getUserData(userId: number): Promise<DataEntity[]> {
         const queryBuilder: SelectQueryBuilder<DataEntity> = this.dataRepository.createQueryBuilder('data');

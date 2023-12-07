@@ -20,36 +20,13 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  // getData(userOptions: UserOptions) {
-
-  //   const params = {
-  //     cardValueID: userOptions.cardValueID,
-  //     chartType: userOptions.chartType,
-  //     selectedOptions: userOptions.selectedOptions.join(','), // Supondo que selectedOptions é uma lista
-  //     startDate: userOptions.startDate,
-  //     endDate: userOptions.endDate,
-  //     aggregate: userOptions.aggregate,
-  //     timeGrouping: userOptions.timeGrouping,
-  //     specificFilter: userOptions.specificFilter
-
-  //   };
-
-  //   console.log(params)
-
-  //   return this.http.get<any[]>(`${environment.api}/extracts/getQuery`, { params });
-  // }
-
   getData(userOptions: UserOptions) {
     const queryParams = `cardValueID=${userOptions.cardValueID}&chartType=${userOptions.chartType}&selectedOptions=${userOptions.selectedOptions.join(',')}&startDate=${userOptions.startDate}&endDate=${userOptions.endDate}&aggregate=${userOptions.aggregate}&timeGrouping=${userOptions.timeGrouping}&specificFilter=${userOptions.specificFilter}`;
-
-    console.log(queryParams);
 
     return this.http.get<any[]>(`${environment.api}/extracts/getQuery?${queryParams}`);
   }
 
   sendFavorite(userOptions: UserOptions): Observable<any[]> {
-    // Use the userOptions as the request body
-    console.log(this.http.post<any[]>(`${environment.api}/users/createOrUpdateData`, userOptions))
     return this.http.post<any[]>(`${environment.api}/users/createOrUpdateData`, userOptions);
   }
 

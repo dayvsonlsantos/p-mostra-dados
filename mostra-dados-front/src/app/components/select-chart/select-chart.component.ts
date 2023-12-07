@@ -353,7 +353,6 @@ export class SelectChartComponent implements OnInit {
   }
 
   saveToDatabase() {
-    console.log(this.userOptions);
 
     this.dataService.sendFavorite(this.userOptions)
       .subscribe(
@@ -435,8 +434,6 @@ export class SelectChartComponent implements OnInit {
 
     //(en) Sets the calendar language to Portuguese (Brazilian) in Angular
     this.dateAdapter.setLocale('pt-BR');
-
-    console.log('aiai' + this.chartValues.chartType)
 
     // Simulation: Retrieving user preferences from the database. 
 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UserOptions } from 'src/app/interfaces/user-options';
 
 @Component({
@@ -6,7 +6,7 @@ import { UserOptions } from 'src/app/interfaces/user-options';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
   card01 = 'dashboard-01'
   card02 = 'dashboard-02'
   card03 = 'dashboard-03'
@@ -21,13 +21,6 @@ export class DashboardComponent implements OnInit {
   currentDate = this.getCurrentDate.toISOString().slice(0, 10);
 
   @Input() userID!: number;
-
-  ngOnInit() {
-    // Check if userID is defined before logging
-    if (this.userID !== undefined) {
-      console.log('User ID:', this.userID);
-    }
-  }
 
   //(pt-br) caso deseje passar o specificFilter, como algum dos 
   // valores de 'Selecione o Tipo de Documento', 'Selecione o Segmento' 

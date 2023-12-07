@@ -18,7 +18,6 @@ export class ExtractController {
     @Get('/getQuery')
     async getQuery(@Query() userOptions: UserOptions): Promise<any> {
         const result = await this.extractsService.getQuery(userOptions);
-        console.log(result);
         return result;
     }
 

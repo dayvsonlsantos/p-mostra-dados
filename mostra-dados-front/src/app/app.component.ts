@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   }
 
   profile_picture = '../assets/profilePicture.png';
-  username = 'Fulano';
+  username = 'Di2win';
   profileType = 'Admin';
   userID = 2;
 

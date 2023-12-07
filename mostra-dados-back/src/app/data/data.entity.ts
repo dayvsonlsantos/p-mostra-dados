@@ -4,7 +4,7 @@ import { UsersEntity } from "../users/users.entity";
 @Entity({ name: 'data' })
 export class DataEntity {
 
-    @PrimaryGeneratedColumn({type: 'bigint'})
+    @PrimaryGeneratedColumn('increment', {type: 'bigint'})
     id: number
 
     @ManyToOne(() => UsersEntity, user => user.id)

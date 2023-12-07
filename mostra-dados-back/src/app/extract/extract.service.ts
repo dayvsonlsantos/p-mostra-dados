@@ -48,7 +48,6 @@ export class ExtractService {
     }
 
     async getQuery(userOptions: any): Promise<any> {
-        console.log(userOptions);
 
         let datePattern = 'MM/YY';
 
@@ -63,6 +62,8 @@ export class ExtractService {
                 datePattern = 'YY';
                 break;
         }
+
+        console.log(userOptions.selectedOptions);
 
         const queryBuilder = this.extractsRepository.createQueryBuilder('e');
 
@@ -425,6 +426,8 @@ export class ExtractService {
         } 
 
         // Selecting one option
+        console.log(userOptions);
+
         
         if (
             userOptions.selectedOptions.includes('only_doc_count') &&
@@ -443,7 +446,9 @@ export class ExtractService {
                 .getRawMany();
 
             return result;
-        } else if (
+        } 
+        
+        if (
             userOptions.selectedOptions.includes('only_pages_process') &&
             userOptions.aggregate === 'sum'
         ) {
@@ -460,7 +465,9 @@ export class ExtractService {
                 .getRawMany();
 
             return result;
-        } else if (
+        } 
+        
+        if (
             userOptions.selectedOptions.includes('only_pages_process') &&
             userOptions.aggregate === 'avg'
         ) {
@@ -477,10 +484,13 @@ export class ExtractService {
                 .getRawMany();
 
             return result;
-        } else if (
+        } 
+        
+        if (
             userOptions.selectedOptions.includes('most_analyzed_doc') &&
             userOptions.aggregate === ''
         ) {
+            console.log('eita')
             const result = await queryBuilder
                 .select([`
                     CASE
@@ -507,7 +517,9 @@ export class ExtractService {
                 .getRawMany();
 
             return result;
-        } else if (
+        } 
+        
+        if (
             userOptions.selectedOptions.includes('doc_most_analyzed_pages') &&
             userOptions.aggregate === 'sum'
         ) {
@@ -538,7 +550,9 @@ export class ExtractService {
                 .getRawMany();
 
             return result;
-        } else if (
+        } 
+        
+        if (
             userOptions.selectedOptions.includes('user_most_analyzed_doc') &&
             userOptions.aggregate === ''
         ) {
@@ -558,7 +572,9 @@ export class ExtractService {
                 .getRawMany();
 
             return result;
-        } else if (
+        } 
+        
+        if (
             userOptions.selectedOptions.includes('user_most_analyzed_pages') &&
             userOptions.aggregate === 'sum'
         ) {
@@ -578,10 +594,13 @@ export class ExtractService {
                 .getRawMany();
 
             return result;
-        } else if (
+        } 
+        
+        if (
             userOptions.selectedOptions.includes('segment_most_analyzed_doc') &&
             userOptions.aggregate === ''
         ) {
+            console.log('oie')
             const result = await queryBuilder
                 .select([`
                     CASE
@@ -606,7 +625,9 @@ export class ExtractService {
                 .getRawMany();
 
             return result;
-        } else if (
+        } 
+        
+        if (
             userOptions.selectedOptions.includes('segment_most_analyzed_pages') &&
             userOptions.aggregate === 'sum'
         ) {
