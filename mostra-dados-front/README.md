@@ -146,7 +146,7 @@ $ make edit
 
 #### **Server**
 
--   **([Nest.js](https://nestjs.com/))**
+-   **[Nest.js](https://nestjs.com/)**
 -   **[TypeORM](https://docs.nestjs.com/recipes/sql-typeorm)**
 -   **[CORS](https://expressjs.com/en/resources/middleware/cors.html)**
 -   **[Postgres](https://www.postgresql.org/)**
