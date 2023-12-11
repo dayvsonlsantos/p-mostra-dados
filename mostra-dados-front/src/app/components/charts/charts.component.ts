@@ -86,6 +86,25 @@ export class ChartsComponent implements OnInit {
 
     var option = {};
 
+    const colors = [
+      '#DE338B', '#BD0067', '#8C00D8', '#5c1c7c', '#350020', '#504A4C',
+      '#FF00A5', '#9F0049', '#7900E4', '#8A2BE2', '#9e2984', '#A38474',
+      '#f9a5ff', '#81002B', '#9E33E7', '#4B0082', '#4B0082',
+      '#f463ff', '#63000D', '#FF67FF', '#483D8B', '#800080',
+      '#ee00ff', '#A600C0', '#D899EC', '#8B008B', '#6e007a',
+    ];
+
+    // Definição de tipo para o array de cores
+    type ColorsArray = string[];
+
+    // Função para embaralhar aleatoriamente um array
+    function shuffleArray(array: ColorsArray) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
     switch (this.chartOption) {
       case 'bar':
         option = {
@@ -141,12 +160,12 @@ export class ChartsComponent implements OnInit {
                 fontSize: 14, // Tamanho da fonte para as etiquetas da série
                 position: 'insideTop' // Exibe o rótulo dentro da barra
               },
-              itemStyle: {  // Defina a cor das barras aqui
-                color: '#DE338B'  // Altere 'blue' para a cor desejada
-              },
-
-              //(en) Getting the values of the 'value' property from each object in the 'mappedData' array
-              data: mappedData.map(item => item.value)
+              data: mappedData.map((item, index) => ({ //(en) Getting the values of the 'value' property from each object in the 'mappedData' array
+                value: item.value,
+                itemStyle: {
+                  color: colors[index]  // Atribui uma cor diferente para cada barra
+                }
+              }))
             }
           ]
         };
@@ -182,10 +201,12 @@ export class ChartsComponent implements OnInit {
           series: [
             {
               type: 'bar',
-              data: mappedData.map(item => item.value),
-              itemStyle: {
-                color: '#DE338B'
-              }
+              data: mappedData.map((item, index) => ({ //(en) Getting the values of the 'value' property from each object in the 'mappedData' array
+                value: item.value,
+                itemStyle: {
+                  color: colors[index]  // Atribui uma cor diferente para cada barra
+                }
+              }))
             }
           ]
         };
@@ -200,14 +221,6 @@ export class ChartsComponent implements OnInit {
             return acc;
           }
         }, 0);
-
-        const colors = [
-          '#DE338B', '#BD0067', '#8C00D8', '#5c1c7c', '#350020', '#504A4C',
-          '#FF00A5', '#9F0049', '#7900E4', '#8A2BE2', '#9e2984', '#A38474',
-          '#f9a5ff', '#81002B', '#9E33E7', '#4B0082', '#4B0082',
-          '#f463ff', '#63000D', '#FF67FF', '#483D8B', '#800080',
-          '#ee00ff', '#A600C0', '#D899EC', '#8B008B', '#6e007a',
-        ];
 
         option = {
           title: {
@@ -339,11 +352,13 @@ export class ChartsComponent implements OnInit {
           series: [
             {
               symbolSize: 20,
-              data: mappedData.map(item => item.value),
               type: 'scatter',
-              itemStyle: {  // Defina a cor das barras aqui
-                color: '#DE338B'  // Altere 'blue' para a cor desejada
-              },
+              data: mappedData.map((item, index) => ({ //(en) Getting the values of the 'value' property from each object in the 'mappedData' array
+                value: item.value,
+                itemStyle: {
+                  color: colors[index]  // Atribui uma cor diferente para cada barra
+                }
+              })),
               label: {
                 show: true,  // Exibe os valores nos pontos
                 position: 'top'  // Posição dos valores (pode ser 'top', 'bottom', 'inside', etc.)
